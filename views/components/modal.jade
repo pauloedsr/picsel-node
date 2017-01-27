@@ -1,0 +1,31 @@
+//- modal
+mixin modal(title,id)
+	.modal.fade(id="#{id}",tabindex="-1",role="dialog",aria-labelledby="#{id}Label" aria-hidden="true")
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type="button",data-dismiss="modal")
+						span(aria-hidden="true") &times;
+						span.sr-only Close
+					h4.modal-title(id="#{id}Label")= title
+				.modal-body
+					block
+				.modal-footer
+					button.btn.btn-default(type="button",data-dismiss="modal") Close
+
+
+mixin modalFoto(title,id)
+	.modal.fade(id="#{id}",tabindex="-1",role="dialog",aria-labelledby="#{id}Label" aria-hidden="true")
+		.modal-dialog(style="width:60%")
+			.modal-content
+				.modal-header
+					button.close(type="button",data-dismiss="modal")
+						span(aria-hidden="true") &times;
+						span.sr-only Close
+					h4.modal-title(id="#{id}Label")= title
+				.modal-body
+					block
+				.modal-footer
+					button.btn.btn-primary(type="button",data-dismiss="modal",onclick="selecionaImagem()",id="btSelecionar") Selecionar
+					button.btn.btn-danger.hidden(type="button",data-dismiss="modal",onclick="desmarcaImagem()",id="btDesmarcar") Desmarcar
+					button.btn.btn-default(type="button",data-dismiss="modal") Fechar

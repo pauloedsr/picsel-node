@@ -1,0 +1,26 @@
+extends _bootstrap
+
+block content
+  
+  +navbar("Fotograf","dropdown_menu")
+    +nav_item("index.html","active") Home
+    +nav_item("index.html") About
+  
+  div.row.center-block(style="width:90%")
+    h3 #{album.title}
+    p Total de #{album.total} fotos - 
+      span#txtSelecionados.text-success 0 selecionadas
+  
+  .panel.panel-default.center-block(style="width:90%")
+    .panel-body
+      div.row.center-block.grid-imagens
+        each imagem in imagens
+          div.col-xs-6.col-sm-4.col-md-3.col-lg-2(style="margin-bottom:1.5em")
+            div(data-toggle="modal",data-target="#modalFoto", onclick="loadImagem('#{imagem.src}','#{imagem.title}', '#{imagem.id}')", style="cursor:pointer; padding:5px;")
+              img.img-thumbnail.center-block(id="foto-#{imagem.id}", src=imagem.thumb)
+  
+  div.row.center-block(style="width:90%; margin-bottom:2em")
+    button.btn.btn-primary.pull-right(type="button") Enviar Seleção de Fotos
+  
+  +modalFoto("Foto","modalFoto")
+      img#imagemFoto.img-responsive.center-block(src="")
